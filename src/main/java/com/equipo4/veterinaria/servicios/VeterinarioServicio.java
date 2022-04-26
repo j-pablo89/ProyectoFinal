@@ -10,17 +10,29 @@ import com.equipo4.veterinaria.entidades.Veterinario;
 import com.equipo4.veterinaria.enums.Rol;
 import com.equipo4.veterinaria.errores.ErrorServicio;
 import com.equipo4.veterinaria.repositorios.VeterinarioRepositorio;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
  * @author juamp
  */
-public class VeterinarioServicio {
+@Service
+public class VeterinarioServicio implements UserDetailsService {
     
     @Autowired
     private VeterinarioRepositorio veterinarioRepositorio;
@@ -131,5 +143,26 @@ public class VeterinarioServicio {
     
     public List<Veterinario> findAll(){
         return veterinarioRepositorio.findAll();
+    }
+    
+    public void agregarUsuarioALaSesion(Veterinario veterinario) {
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+        HttpSession session = attributes.getRequest().getSession(true);
+        session.setAttribute("veterinario", veterinario);
+    }
+    
+
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        try {
+            Veterinario veterinario = veterinarioRepositorio.buscarPorEmail(email);
+            List<GrantedAuthority> privilegios = new ArrayList<>();
+            privilegios.add(new SimpleGrantedAuthority("ROLE_"+veterinario.getRol()));
+            agregarUsuarioALaSesion(veterinario);
+            return new User(email,veterinario.getPassword(),privilegios);
+        } catch (Exception e) {
+            throw new UsernameNotFoundException("Usuario no encontrado");
+        }
+        
     }
 }
