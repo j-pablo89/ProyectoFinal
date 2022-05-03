@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
+    <link rel="stylesheet" href="css/all.min.css" >
+    <link rel="icon" href="img/iconohuella.png">
+    <style>
+        
+        input#abrir-cerrar {
+            visibility:hidden;
+            position: absolute;
+            top: -9999px;
+        }
+        label[for="abrir-cerrar"] {
+            cursor:pointer;
+            padding: 1rem;
+            background-color:#333;
+            color:#fff;
+            display:inline-block;
+            width: 1400px;
+        }
+        .cerrar {
+            display:none;
+        }
+        
+        #sidebar {
+            width:0;
+        }
+        
+        #contenido {
+            margin-left:0;
+        }
+        
+        input#abrir-cerrar:checked ~ #sidebar {
+            width:300px;
+        }
+        
+        input#abrir-cerrar:checked + label[for="abrir-cerrar"], input#abrir-cerrar:checked ~ #contenido {
+            margin-left:300px;
+            transition: margin-left .4s;
+        }
+        
+        input#abrir-cerrar:checked + label[for="abrir-cerrar"] .cerrar {
+            display:inline;
+        }
+        
+        input#abrir-cerrar:checked + label[for="abrir-cerrar"] .abrir {
+            display:none;
+        }
+        
+        .sidebar {
+            position: fixed;
+            height: 100%;
+            width: 0;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: #00acee;
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding: 1rem 0;
+            box-sizing:border-box;
+        }
+        
+        .sidebar .boton-cerrar {
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            font-size: 2rem;
+            display: block;
+            padding: 0;
+            line-height: 1.5rem;
+            margin: 0;
+            height: 32px;
+            width: 32px;
+            text-align: center;
+            
+        }
+        
+        .sidebar ul, .sidebar li{
+            margin:0;
+            padding:0;
+            list-style:none inside;
+        }
+        
+        .sidebar ul {
+            margin: 4rem auto;
+            display: block;
+            width: 80%;
+            min-width:200px;
+        }
+        
+        .sidebar a {
+            display: block;
+            font-size: 120%;
+            color: #eee;
+            text-decoration: none;
+            
+        }
+        
+        .sidebar a:hover{
+            color:#fff;
+            background-color: rgb(83, 82, 81);
+        
+        }
+        
+        #contenido {
+            transition: margin-left .4s;
+            padding: 1rem;
+        }
+    
+        .abrir-cerrar {
+            color: #2E88C7;
+            font-size:1rem;   
+        }
+
+        body {
+            font-family: "Segoe UI", sans-serif;
+            font-size:100%;
+            margin:0;
+            padding:0;
+        }
+        nav{
+            border: white;
+            
+        }
+        </style> 
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+          // Variables
+          const baseDeDatos = [
+          {
+                  id: 1,
+                  nombre: 'Bolso transportador',
+                  precio: 2999,
+                  imagen: 'img/bolso.jpg'
+              },
+              {
+                  id: 2,
+                  nombre: 'Cepillo',
+                  precio: 397,
+                  imagen: 'img/cepillo.jpg'
+              },
+              {
+                  id: 3,
+                  nombre: 'Comederos',
+                  precio: 186,
+                  imagen: 'img/comederos.jpg'
+              },
+              {
+                  id: 4,
+                  nombre: 'Correas',
+                  precio: 1200,
+                  imagen: 'img/correas.jpg'
+              },
+              {    id: 5,
+                  nombre: 'Set de juguetes',
+                  precio: 1300,
+                  imagen: 'img/juguetes.jpg'
+              },
+
+              {    id: 6,
+                  nombre: 'Alimento para Gatos x85gr',
+                  precio: 275,
+                  imagen: 'img/royal1.jpg'
+              },
+
+              {    id: 7,
+                  nombre: 'Alimento para Gatos x1kg',
+                  precio: 3210,
+                  imagen: 'img/royal.jpg'
+              },
+
+               {  id: 8,
+                  nombre: 'Capa de lluvia',
+                  precio: 2500,
+                  imagen: 'img/img1.jpeg'
+              },
+              {
+                  id: 9,
+                  nombre: 'Botitas',
+                  precio: 1500,
+                  imagen: 'img/img2.jpeg'
+              },
+              {
+                  id: 10,
+                  nombre: 'Ropa de gato',
+                  precio: 2800,
+                  imagen: 'img/img3.jpeg'
+              },
+              {
+                  id: 11,
+                  nombre: 'Buso para perro',
+                  precio: 1400,
+                  imagen: 'img/img4.jpeg'
+              },
+              {    id: 12,
+                  nombre: 'Arenero',
+                  precio: 1000,
+                  imagen: 'img/img5.jpeg'
+              },
+
+              {    id: 13,
+                  nombre: 'Piedritas para gatos',
+                  precio: 1700,
+                  imagen: 'img/img6.jpeg'
+              },
+              {    id: 14,
+                  nombre: 'Bolsas sanitarias',
+                  precio: 250,
+                  imagen: 'img/img7.jpeg'
+              },
+
+              {    id: 15,
+                  nombre: 'Alfombra sanitaria',
+                  precio: 8700,
+                  imagen: 'img/img8.jpeg'
+              },
+
+              {    id: 16,
+                  nombre: 'Cama cuna para perros/gatos',
+                  precio: 1600,
+                  imagen: 'img/img9.jpeg'
+              },
+              {    id: 17,
+                  nombre: 'Alimento para perro adulto x24kg',
+                  precio: 3000,
+                  imagen: 'img/img10.jpeg'
+              },
+
+              {    id: 18,
+                  nombre: 'Alimento para perro adulto x3kg',
+                  precio: 1200,
+                  imagen: 'img/img11.jpeg'
+              }
+             
+          ];
+
+          let carrito = [];
+          const divisa = '$';
+          const DOMitems = document.querySelector('#items');
+          const DOMcarrito = document.querySelector('#carrito');
+          const DOMtotal = document.querySelector('#total');
+          const DOMbotonVaciar = document.querySelector('#boton-vaciar');
+
+          // Funciones
+
+          /**
+          * Dibuja todos los productos a partir de la base de datos. No confundir con el carrito
+          */
+          function renderizarProductos() {
+              baseDeDatos.forEach((info) => {
+                  // Estructura
+                  const miNodo = document.createElement('div');
+                  miNodo.classList.add('card', 'col-sm-4');
+                  // Body
+                  const miNodoCardBody = document.createElement('div');
+                  miNodoCardBody.classList.add('card-body');
+                  // Titulo
+                  const miNodoTitle = document.createElement('h5');
+                  miNodoTitle.classList.add('card-title');
+                  miNodoTitle.textContent = info.nombre;
+                  // Imagen
+                  const miNodoImagen = document.createElement('img');
+                  miNodoImagen.classList.add('img-fluid');
+                  miNodoImagen.setAttribute('src', info.imagen);
+                  // Precio
+                  const miNodoPrecio = document.createElement('p');
+                  miNodoPrecio.classList.add('card-text');
+                  miNodoPrecio.textContent = `${divisa}${info.precio}`;
+                  // Boton 
+                  const miNodoBoton = document.createElement('button');
+                  miNodoBoton.classList.add('btn', 'btn-primary');
+                  miNodoBoton.textContent = '+';
+                  miNodoBoton.setAttribute('marcador', info.id);
+                  miNodoBoton.addEventListener('click', anyadirProductoAlCarrito);
+                  // Insertamos
+                  miNodoCardBody.appendChild(miNodoImagen);
+                  miNodoCardBody.appendChild(miNodoTitle);
+                  miNodoCardBody.appendChild(miNodoPrecio);
+                  miNodoCardBody.appendChild(miNodoBoton);
+                  miNodo.appendChild(miNodoCardBody);
+                  DOMitems.appendChild(miNodo);
+              });
+          }
+
+          /**
+          * Evento para añadir un producto al carrito de la compra
+          */
+          function anyadirProductoAlCarrito(evento) {
+              // Anyadimos el Nodo a nuestro carrito
+              carrito.push(evento.target.getAttribute('marcador'))
+              // Actualizamos el carrito 
+              renderizarCarrito();
+
+          }
+
+          /**
+          * Dibuja todos los productos guardados en el carrito
+          */
+          function renderizarCarrito() {
+              // Vaciamos todo el html
+              DOMcarrito.textContent = '';
+              // Quitamos los duplicados
+              const carritoSinDuplicados = [...new Set(carrito)];
+              // Generamos los Nodos a partir de carrito
+              carritoSinDuplicados.forEach((item) => {
+                  // Obtenemos el item que necesitamos de la variable base de datos
+                  const miItem = baseDeDatos.filter((itemBaseDatos) => {
+                      // ¿Coincide las id? Solo puede existir un caso
+                      return itemBaseDatos.id === parseInt(item);
+                  });
+                  // Cuenta el número de veces que se repite el producto
+                  const numeroUnidadesItem = carrito.reduce((total, itemId) => {
+                      // ¿Coincide las id? Incremento el contador, en caso contrario no mantengo
+                      return itemId === item ? total += 1 : total;
+                  }, 0);
+                  // Creamos el nodo del item del carrito
+                  const miNodo = document.createElement('li');
+                  miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
+                  miNodo.textContent = `${numeroUnidadesItem} x ${miItem[0].nombre} - ${divisa}${miItem[0].precio}`;
+                  // Boton de borrar
+                  const miBoton = document.createElement('button');
+                  miBoton.classList.add('btn', 'btn-danger', 'mx-5');
+                  miBoton.textContent = 'X';
+                  miBoton.style.marginLeft = '1rem';
+                  miBoton.dataset.item = item;
+                  miBoton.addEventListener('click', borrarItemCarrito);
+                  // Mezclamos nodos
+                  miNodo.appendChild(miBoton);
+                  DOMcarrito.appendChild(miNodo);
+              });
+             // Renderizamos el precio total en el HTML
+             DOMtotal.textContent = calcularTotal();
+          }
+
+          /**
+          * Evento para borrar un elemento del carrito
+          */
+          function borrarItemCarrito(evento) {
+              // Obtenemos el producto ID que hay en el boton pulsado
+              const id = evento.target.dataset.item;
+              // Borramos todos los productos
+              carrito = carrito.filter((carritoId) => {
+                  return carritoId !== id;
+              });
+              // volvemos a renderizar
+              renderizarCarrito();
+          }
+
+          /**
+           * Calcula el precio total teniendo en cuenta los productos repetidos
+           */
+          function calcularTotal() {
+              // Recorremos el array del carrito 
+              return carrito.reduce((total, item) => {
+                  // De cada elemento obtenemos su precio
+                  const miItem = baseDeDatos.filter((itemBaseDatos) => {
+                      return itemBaseDatos.id === parseInt(item);
+                  });
+                  // Los sumamos al total
+                  return total + miItem[0].precio;
+              }, 0).toFixed(2);
+          }
+
+          /**
+          * Varia el carrito y vuelve a dibujarlo
+          */
+          function vaciarCarrito() {
+              // Limpiamos los productos guardados
+              carrito = [];
+              // Renderizamos los cambios
+              renderizarCarrito();
+          }
+
+          // Eventos
+          DOMbotonVaciar.addEventListener('click', vaciarCarrito);
+
+          // Inicio
+          renderizarProductos();
+          renderizarCarrito();
+        });
+    </script>
+</head>
+<body>
+
+    <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+    <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
+    <div id="sidebar" class="sidebar">
+        <ul class="menu">
+            <li><a href="Homeuser.html">HOME </a></li>
+     <li><a href="UregBlog.html">BLOG </a></li>
+     <li><a href="UregSumate.html">SUMATE COMO PROFESIONAL</a></li>
+     <li><a href="Consulta.html">CONSULTA ONLINE</a></li>
+     <li><a href="UregTienda.html">TIENDA</a></li> 
+            
+        </ul>
+    </div>
+
+    <nav class="navbar">
+        <div id="contenido">
+            <a> <img src="img/mascotaclub.png" width="" height=""></a>
+            
+  </nav> 
+    
+    <div class="container">
+        <div class="row">
+            <!-- Elementos generados a partir del JSON -->
+            <main id="items" class="col-sm-8 row"></main>
+            <!-- Carrito -->
+            <aside class="col-sm-4">
+                <h2>Carrito <img src="img/carrito.png" alt=""></h2>
+                <!-- Elementos del carrito -->
+                <ul id="carrito" class="list-group"></ul>
+                <hr>
+                <!-- Precio total -->
+                <p class="text-right">Total: $<span id="total"></span></p>
+                <div class="mb-3">
+                <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+                <a href="Comprareg.html"><button id="boton-comprar" class="btn btn-danger">Comprar</button></a>
+                 </div>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>

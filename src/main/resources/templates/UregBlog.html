@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>BLOG</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
+        <link rel="stylesheet" href="css/all.min.css" >
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="icon" href="img/iconohuella.png">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        
+    </head>
+          
+        <!--estilo del menu -->
+    <style>
+        
+      input#abrir-cerrar {
+          visibility:hidden;
+          position: absolute;
+          top: -9999px;
+      }
+      label[for="abrir-cerrar"] {
+          cursor:pointer;
+          padding: 1rem;
+          background-color:#333;
+          color:#fff;
+          display:inline-block;
+          width: 1400px;
+      }
+      .cerrar {
+          display:none;
+      }
+      
+      #sidebar {
+          width:0;
+      }
+      
+      #contenido {
+          margin-left:0;
+      }
+      
+      input#abrir-cerrar:checked ~ #sidebar {
+          width:300px;
+      }
+      
+      input#abrir-cerrar:checked + label[for="abrir-cerrar"], input#abrir-cerrar:checked ~ #contenido {
+          margin-left:300px;
+          transition: margin-left .4s;
+      }
+      
+      input#abrir-cerrar:checked + label[for="abrir-cerrar"] .cerrar {
+          display:inline;
+      }
+      
+      input#abrir-cerrar:checked + label[for="abrir-cerrar"] .abrir {
+          display:none;
+      }
+      
+      .sidebar {
+          position: fixed;
+          height: 100%;
+          width: 0;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          background-color: #00acee;
+          overflow-x: hidden;
+          transition: 0.4s;
+          padding: 1rem 0;
+          box-sizing:border-box;
+      }
+      
+      .sidebar .boton-cerrar {
+          position: absolute;
+          top: 0.5rem;
+          right: 1rem;
+          font-size: 2rem;
+          display: block;
+          padding: 0;
+          line-height: 1.5rem;
+          margin: 0;
+          height: 32px;
+          width: 32px;
+          text-align: center;
+          
+      }
+      
+      .sidebar ul, .sidebar li{
+          margin:0;
+          padding:0;
+          list-style:none inside;
+      }
+      
+      .sidebar ul {
+          margin: 4rem auto;
+          display: block;
+          width: 80%;
+          min-width:200px;
+      }
+      
+      .sidebar a {
+          display: block;
+          font-size: 120%;
+          color: #eee;
+          text-decoration: none;
+          font-weight: bold;
+      }
+      
+      .sidebar a:hover{
+          color:#fff;
+          background-color: rgb(83, 82, 81);
+      
+      }
+      
+      #contenido {
+          transition: margin-left .4s;
+          padding: 1rem;
+      }
+    
+      .abrir-cerrar {
+          color: #2E88C7;
+          font-size:1rem;
+          font-weight: bold;   
+      }
+
+      body {
+          font-family: "Segoe UI", sans-serif;
+          font-size:100%;
+          margin:0;
+          padding:0;
+          
+      }
+      h2 {
+          color:rgb(5, 5, 5);
+          font-weight:bold;
+      }
+      h3 {
+          color:rgb(5, 5, 5);
+          font-weight:bold;
+          text-align: center;
+          size: 10x;
+          
+      }
+      h4 {
+          color:rgb(5, 5, 5);
+          font-weight:bold;
+          size: 10x;
+          margin-left: 10%;
+          margin-top: 10%;
+          
+          
+      }
+      p{
+        
+        font-size: large;
+        text-align: center;
+        color: rgb(12, 11, 11);
+
+      }
+      .card:hover{
+        transform: scale(1.05);
+        box-shadow: 0 20px 20px rgba(0,0,0,.12), 0 4px 8px rgba(0,0,0,.06);
+    }
+      
+    </style> 
+
+    <!-- cuerpo -->
+    <body>
+          <!-- Menu -->
+        <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+        <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
+        <div id="sidebar" class="sidebar">
+            <ul class="menu">
+            <li><a href="Homeuser.html">HOME </a></li>
+            <li><a href="UregBlog.html">BLOG </a></li>
+            <li><a href="UregSumate.html">SUMATE COMO PROFESIONAL</a></li>
+            <li><a href="Consulta.html">CONSULTA ONLINE</a></li>
+            <li><a href="UregTienda.html">TIENDA</a></li> 
+            </ul>
+        </div>
+
+        <a> <img src="img/mascotaclub.png" width="" height=""></a>
+      
+        <h3>Aquí podrás encontrar curiosidades, videos, consejos y muchas cosas más.Si buscás todo lo relacionado con las mascotas, estás en el lugar ideal</p>
+            
+          <div class="container">   
+            <div class=" card-columns mt-3" >
+                <div class="card text-center card border-dark bg-light mt-4"> 
+                   <div class="card-body ">
+                     <a class="post_link" href="https://misanimales.com/consejos-para-cuidar-bien-de-tus-mascotas/" target="_blank"> 
+                        <div class="post_border">
+                         <img alt="" title="" class='post_img img-responsive' alt='imagen principal post blog de mascotas' style='width:100%;' src="img/gatoyperro.jpg">								
+                         <div class="post_txt">
+                           <p class="post_categ">Consejos</p>
+                           <h2 class="post_title">Consejos para cuidar bien de tus mascotas</h2>
+                         </div>
+                       </div>
+                     </a>
+                    </div> 
+                  </div> 
+                   
+                 <div class="card text-center card border-dark bg-light mt-4 " >
+                   <div class="card-body ">
+                     <a class="post_link" href="https://misanimales.com/5-cosas-jamas-tienes-que-hacerle-a-tu-gato/">
+                         <div class="post_border">
+                            <img alt="" title="" class='post_img img-responsive' alt='imagen principal post blog de mascotas' style='width:100%;' src="img/gato.jpg">								
+                            <div class="post_txt">
+                              <p class="post_categ">Curiosidades</p>
+                              <h2 class="post_title">5 Cosas que jamás tenés que hacerle a tu gato </h2>
+                           </div>
+                         </div>
+                     </a>
+                   </div>
+                </div>  
+
+                <div class="card text-center card border-dark bg-light mt-4" >
+                   <div class="card-body">
+                     <a class="post_link" href="https://misanimales.com/el-significado-del-color-de-los-gatos/" target="_blank">
+                       <div class="post_border">
+                         <img alt="" title="" class='post_img img-responsive' alt='imagen principal post blog de mascotas' style='width:100%;' src="img/gatitos.jpg">								
+                         <div class="post_txt">
+                           <p class="post_categ">Curiosidades</p>
+                           <h2 class="post_title">El significado del color de los gatos</h2>
+                         </div>
+                        </div>
+                     </a>
+                   </div>                 
+                 </div>   
+
+              
+               <div class="card text-center card border-dark bg-light mt-4" >
+                  <div class="card-body">
+                     <a class="post_link" href="https://postgradoveterinaria.com/cuidados-perro-recomendaciones-basicas/" target="_blank">
+                       <div class="post_border">
+                         <img alt="" title="" class='post_img img-responsive' alt='imagen principal post blog de mascotas' style='width:100%;' src="img/caricia-perro1.jpg">								
+                         <div class="post_txt">
+                           <p class="post_categ">Recomendaciones</p>
+                           <h2 class="post_title">Recomendaciones básicas para el cuidado del perro</h2>
+                         </div>
+                        </div>
+                     </a>
+                   </div>
+                </div>  
+
+              
+               <div class="card text-center card border-dark bg-light mt-4" >
+                  <div class="card-body">
+                     <a class="post_link" href="https://www.elblogdeuma.com/mitos-sobre-la-alimentacion-natural-para-perros/" target="_blank">
+                        <div class="post_border">
+                          <img alt="" title="" class='post_img img-responsive' alt='imagen principal post blog de mascotas' style='width:100%;' src="img/perrito.jpg">								
+                          <div class="post_txt">
+                            <p class="post_categ">Curiosidades</p>
+                            <h2 class="post_title">Mitos sobre la alimentacion natural para perros</h2>
+                         </div>
+                       </div>
+                     </a>
+                   </div>
+                </div>   
+               
+              
+               <div class="card text-center card border-dark bg-light mt-4">
+                  <div class="card-body">
+                    <a class="post_link" href="https://misanimales.com/los-perros-nunca-mueren-duermen-junto-a-tu-corazon/" target="_blank">
+                       <div class="post_border">
+                         <img alt="" title="" class='post_img img-responsive' alt='imagen principal post blog de mascotas' style='width:100%;' src="img/perros-nunca-mueren.jpg">								
+                         <div class="post_txt">
+                            <p class="post_categ">Curiosidades</p>
+                            <h2 class="post_title">Los perros nunca mueren; duermen junto a tu corazon</h2>
+                         </div>
+                       </div>
+                     </a>
+                  </div>
+              </div>  
+            </div>
+          </div>  
+           
+          <h4 >DEJANOS TU MENSAJE!</h4>
+          
+          <div class="container">
+            <div class="col-md-8">
+                <form>
+                    <div class="form-group mb-3">
+                      <label>Nombre</label>
+                      <input class="form-control" type="text"  id="name">
+                    </div>
+                    <div class="form-group mb-3">
+                     <label>Mensaje</label>
+                     <textarea id="comment" class="form-control"></textarea></label>
+                    </div>
+                    <button type="submit" class=" btn btn-light" >Enviar</button>
+                  </form>
+              </div>
+           </div>
+ 
+  </body>
+</html>

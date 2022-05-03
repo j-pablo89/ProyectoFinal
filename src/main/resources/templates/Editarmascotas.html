@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>REGISTRARSE</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
+        <link rel="stylesheet" href="css/all.min.css" >
+        <link rel="icon" href="img/iconohuella.png">
+        
+    </head>
+       
+       <!-- estilo  -->
+    <style>
+            input#abrir-cerrar {
+            visibility:hidden;
+            position: absolute;
+            top: -9999px;
+        }
+        label[for="abrir-cerrar"] {
+            cursor:hand;
+            padding: 1rem;
+            background-color:#333;
+            color:#fff;
+            display:inline-block;
+            width: 1400px;
+        }
+        .cerrar {
+            display:none;
+        }
+        
+        #sidebar {
+            width:0;
+        }
+        
+        #contenido {
+            margin-left:0;
+        }
+        
+        input#abrir-cerrar:checked ~ #sidebar {
+            width:300px;
+        }
+        
+        input#abrir-cerrar:checked + label[for="abrir-cerrar"], input#abrir-cerrar:checked ~ #contenido {
+            margin-left:300px;
+            transition: margin-left .4s;
+        }
+        
+        input#abrir-cerrar:checked + label[for="abrir-cerrar"] .cerrar {
+            display:inline;
+        }
+        
+        input#abrir-cerrar:checked + label[for="abrir-cerrar"] .abrir {
+            display:none;
+        }
+        
+        .sidebar {
+            position: fixed;
+            height: 100%;
+            width: 0;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-color: #00acee;
+            overflow-x: hidden;
+            transition: 0.4s;
+            padding: 1rem 0;
+            box-sizing:border-box;
+        }
+        
+        .sidebar .boton-cerrar {
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            font-size: 2rem;
+            display: block;
+            padding: 0;
+            line-height: 1.5rem;
+            margin: 0;
+            height: 32px;
+            width: 32px;
+            text-align: center;
+            
+        }
+        
+        .sidebar ul, .sidebar li{
+            margin:0;
+            padding:0;
+            list-style:none inside;
+        }
+        
+        .sidebar ul {
+            margin: 4rem auto;
+            display: block;
+            width: 80%;
+            min-width:200px;
+        }
+        
+        .sidebar a {
+            display: block;
+            font-size: 120%;
+            color: #eee;
+            text-decoration: none;
+            
+        }
+        
+        .sidebar a:hover{
+            color:#fff;
+            background-color: rgb(83, 82, 81);
+        
+        }
+        
+        #contenido {
+            transition: margin-left .4s;
+            padding: 1rem;
+        }
+    
+        .abrir-cerrar {
+            color: #2E88C7;
+            font-size:1rem;   
+        }
+            
+            body {
+            font-family: "Open Sans", sans-serif;
+            height: 100vh;
+            background-size: cover;
+            }
+            
+            nav{
+            border: white;
+            
+        }
+        
+        
+        form#formulario{
+            display: block;
+            color: black;
+            position:absolute;
+            text-align: justify;
+            top: 40%;
+            left: 40%;
+            
+        }
+        
+        .hide {display:none;}
+        .right {text-align:right;}
+        .error {border:1px solid Red;}
+    
+        .nombre {width:100%}
+        .formulario {text-align:center;width:400px;border:1px solid #eee;padding:10px;}
+        .formulario label,.formulario label~input {
+            width: 50%;
+            display: inline-block;
+        }
+        .formulario label {text-align:right;padding-right:20px;}
+        .formulario>div {margin-top:10px;overflow:hidden;}
+        .boton {
+            border:none;
+            color:rgb(10, 9, 9);
+            padding:10px 20px;
+        }
+        .agregar {
+            background-color:white;
+        }
+        .guardar {
+            background-color:white;
+        }
+    
+        #listado {
+            border:1px solid #eee;
+            margin-top:20px;
+            top:20%;
+            left:60%;
+            width:400px;
+        }
+        #listado th {background-color:#eee;padding:5px 10px;}
+        #listado img {
+            cursor:pointer;
+        }
+        
+    </style> 
+    
+      <!-- cuerpo -->
+
+    <body >
+
+        <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+        <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
+        <div id="sidebar" class="sidebar">
+            <ul class="menu">
+                <li><a href="Homeuser.html">HOME </a></li>
+                <li><a href="UregBlog.html">BLOG </a></li>
+                <li><a href="UregSumate.html">SUMATE COMO PROFESIONAL</a></li>
+                <li><a href="Consulta.html">CONSULTA ONLINE</a></li>
+                <li><a href="UregTienda.html">TIENDA</a></li> 
+                
+            </ul>
+        </div>
+
+        <nav class="navbar">
+            <a> <img id="img1" src="img/mascotaclub.png" width="" height=""></a>
+            <div class="dropdown show">
+                <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img id="img2" height="128" width="128"  class="rounded-circle " src="img/cat.jpg" />
+                </a>
+        
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="Perfil.html">Perfil</a>
+                    <a class="dropdown-item" href="Misconsultas.html">Mis Consultas</a>
+                    <a class="dropdown-item" href="Mismascotas.html">Mis Mascotas</a>
+                    <a class="dropdown-item" href="Home.html">Cerrar Sesion</a>
+                </div>
+              
+            </div>
+        </nav> 
+  
+           <form id="formulario" action="Mismascotas.html" method="post" >
+             <legend>Editar</legend>
+                 <div class="mb-3">
+                     <label>Nombre: </label>
+                     <input type="text" placeholder="Nombre de tu mascota" name="nombre">
+                 </div>
+                 <div class="mb-3">
+                     <label>Edad: </label>
+                     <input type="number" placeholder="Edad" name="edad" min="1" max="100">
+                 </div>
+                 <div class="mb-3">
+                     <label>Mascota: </label>
+                     <input type="text" placeholder="Perro/Gato" name="mascota">
+                 </div>
+                 <div class="mb-3">
+                     <label>Carnet:  </label>
+                     <input type="text" placeholder="Si/No" name="carnet">
+                 </div>
+                 <br><br><input type="submit" value="Agregar" class="boton agregar"> <input type="button" value="Guardar" class='boton guardar'>
+                 <a class="btn btn-outline-complementary" href="Mismascotas.html">Cancelar</a>
+            
+
+              <table id="listado" class="hide" >
+                  <thead class="bg-white border-black">
+                     <th>Nombre</th>
+                     <th>Edad</th>
+                     <th>Mascota</th>
+                     <th>Carnet</th>  
+                  </thead>
+                  <tbody>
+
+                  </tbody>
+             </table>
+
+            </form>
+
+            <script>
+                // Evento que se ejecuta al pulsar el botón agregar
+                document.querySelector("input[type=submit]").addEventListener("click",function(e){
+                    // cancelamos el evento
+                    e.preventDefault();
+                 
+                    const nombre=document.querySelector("input[name=nombre]");
+                    const edad=document.querySelector("input[name=edad]");
+                    const mascota=document.querySelector("input[name=mascota]");
+                    const carnet=document.querySelector("input[name=carnet]");
+                 
+                    // mostramos un error si no ha recibido el nombre
+                    if (!nombre.value) {
+                        nombre.classList.add("error");
+                        return;
+                    }
+                    nombre.classList.remove("error");
+                 
+                    // mostramos un error si no ha recibido una edad
+                    if (isNaN(parseInt(edad.value)) || parseInt(edad.value)<=0) {
+                        edad.classList.add("error");
+                        return;
+                    }
+                    edad.classList.remove("error");
+
+                    if (!mascota.value) {
+                        mascota.classList.add("error");
+                        return;
+                    }
+                    mascota.classList.remove("error");
+
+                    if (!carnet.value) {
+                        carnet.classList.add("error");
+                        return;
+                    }
+                    carnet.classList.remove("error");
+                 
+                    agregarFila(nombre.value, edad.value, mascota.value, carnet.value);
+                    agregarInput(nombre.value, edad.value, mascota.value, carnet.value);
+                 
+                    /*limpiamos los valores del input*/
+                    carnet.value="";
+                    mascota.value="";
+                    edad.value="";
+                    nombre.value="";
+                    nombre.focus();
+                 
+                });
+                 
+                // Evento que se ejecuta cuando se pulsa sobre el botón enviar
+                document.querySelector(".guardar").addEventListener("click", function(e) {
+                    this.closest("form").submit();
+                })
+                 
+                /**
+                 * Funcion para añadir los datos en la tabla
+                 *
+                 * 
+                 */
+                function agregarFila(nombre, edad, mascota, carnet) {
+                    // añadimos  a la tabla crando el tr, td's y el botón para eliminarlo
+                    const tr=document.createElement("tr");
+                 
+                    const tdNombre=document.createElement("td");
+                    let txt=document.createTextNode(nombre);
+                    tdNombre.appendChild(txt);
+                    tdNombre.className="nombre";
+                 
+                    const tdEdad=document.createElement("td");
+                    txt=document.createTextNode(edad);
+                    tdEdad.appendChild(txt);
+                    tdEdad.className="edad";
+
+                    const tdMascota=document.createElement("td");
+                     txt=document.createTextNode(mascota);
+                    tdMascota.appendChild(txt);
+                    tdMascota.className="mascota";
+
+                    const tdCarnet=document.createElement("td");
+                      txt=document.createTextNode(carnet);
+                    tdCarnet.appendChild(txt);
+                    tdCarnet.className="carnet";
+
+                 
+                    const tdRemove=document.createElement("td");
+                    const buttonRemove=document.createElement("img");
+                    buttonRemove.src="img/tachito.png";
+                    buttonRemove.onclick=eliminarFila;
+                    tdRemove.appendChild(buttonRemove);
+
+    
+                    tr.appendChild(tdNombre);
+                    tr.appendChild(tdEdad);
+                    tr.appendChild(tdMascota);
+                    tr.appendChild(tdCarnet);
+                    tr.appendChild(tdRemove);
+                 
+                    const tbody=document.getElementById("listado").querySelector("tbody").appendChild(tr);
+                 
+                    // eliminamos la clase que tiene oculta la tabla cando no hay ningun dato
+                    document.getElementById("listado").classList.remove("hide");
+                }
+                 
+                /**
+                 * Funcion para eliminar el usuario de la tabla y llamar a la funcion
+                 * para eliminar al usuario del input oculto
+                 */
+                function eliminarFila(e) {
+                    const tr=this.closest("tr")
+                    const nombre=tr.querySelector(".nombre").innerText;
+                    const edad=tr.querySelector(".edad").innerText;
+                    const mascota=tr.querySelector(".mascota").innerText;
+                    const carnet=tr.querySelector(".carnet").innerText;
+                 
+                    eliminarInput(nombre, edad, mascota, carnet);
+                    tr.remove();
+                 
+                    // Si no hay ningun elemento en la lista, escondemos la tabla
+                    if (document.getElementById("listado").querySelector("tbody").querySelectorAll("tr").length==0) {
+                        document.getElementById("listado").classList.add("hide");
+                    }
+                }
+                 
+                /**
+                 * Funcion para crear un input oculto para cuando se envie el formulario
+                 *
+                 */
+                function agregarInput(nombre, edad, mascota,carnet) {
+                    const input=document.createElement("input");
+                    input.type="hidden";
+                    input.name="nombres[]";
+                    input.value=nombre+"-"+edad+"-"+mascota+"-"+carnet;
+                 
+                    document.querySelector("form").appendChild(input);
+                }
+                 
+                /**
+                 * Funcion para eliminar el input oculto
+                 *
+                 *
+                 */
+                function eliminarInput(nombre, edad,mascota,carnet) {
+                    const input=document.querySelector("input[type=hidden][value="+nombre+"-"+edad+"-"+mascota+"-"+carnet+"]");
+                    input.remove();
+                }
+                </script>
+
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+                <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
+                 
+    </body>     
+</html>    

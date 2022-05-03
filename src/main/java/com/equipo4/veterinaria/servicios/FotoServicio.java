@@ -9,15 +9,15 @@ import com.equipo4.veterinaria.entidades.Foto;
 import com.equipo4.veterinaria.repositorios.FotoRepositorio;
 import java.io.IOException;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
  * @author juamp
  */
+@Service
 public class FotoServicio {
     
     @Autowired

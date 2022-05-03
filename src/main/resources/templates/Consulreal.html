@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>CONSULTA</title>
+        <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
+        <link rel="stylesheet" href="css/all.min.css" >
+        <link rel="stylesheet" href="style.css">
+        <link rel="icon" href="img/iconohuella.png">
+    </head>
+
+    <body>
+
+       <div class="window-notice" id="window-notice">
+            <div class="content">
+                <div class="content-text">CONSULTA REALIZADA 
+                          <div id="current_date">
+                             <script>
+                             document.getElementById("current_date").innerHTML = Date();
+                             </script>
+                           </div>
+                           <button><a href="Homeuser.html" id="close-button">Aceptar</a></button>
+                           <button><a href="Consulta.html" id="close-button">Realizar otra consulta</a></button>
+                 </div>
+            </div>
+        </div>
+
+      <style>
+          .window-notice {
+           background: rgba(208, 209, 211, 0.85);
+           left: 0;
+           bottom: 0;
+           right: 0;
+           top: 0;
+           display: flex;
+           position: fixed;
+           z-index: 999;
+           }
+
+           .window-notice .content {
+           background: #fff;
+           border-radius: 2px;
+           box-shadow: 0 1px 3px rgba(33, 41, 52, .75);
+           box-sizing: content-box;
+           display: flex;
+           flex-direction: column;
+           margin: auto;
+           max-width: 600px;
+           min-width: 320px !important;
+           overflow: hidden;
+           position: relative;
+           width: 100%;
+           padding: 2rem;
+           font-size: 1.3rem;
+          }
+          
+      </style>
+
+    </body>
+
+</html>

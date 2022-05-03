@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>MASCOTACLUB</title>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
+        <link rel="stylesheet" href="css/all.min.css" >
+         <link rel="icon" href="img/iconohuella.png">
+         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGs03+Hhxv8T/Q5Paxtkktu6ug5TONV6gBiFeWPGFN9Muhof 23091fjh" crossorigin="anonymous">
+        
+    </head>
+
+   <!-- estilos -->
+
+    <style>
+
+      /*Menu*/
+
+     input#abrir-cerrar {
+        visibility:hidden;
+        position: absolute;
+        top: -9999px;
+     }
+
+     label[for="abrir-cerrar"] {
+        cursor:hand;
+        padding: 1rem;
+        background-color:#333;
+        color:#fff;
+        display:inline-block;
+        width: 1400px;
+     }
+
+     .cerrar {
+        display:none;
+     }
+    
+     #sidebar {
+        width:0;
+     }
+    
+     #contenido {
+        margin-left:0;
+     }
+    
+     input#abrir-cerrar:checked ~ #sidebar {
+        width:300px;
+     }
+    
+     input#abrir-cerrar:checked + label[for="abrir-cerrar"], input#abrir-cerrar:checked ~ #contenido {
+        margin-left:300px;
+        transition: margin-left .4s;
+     }
+    
+     input#abrir-cerrar:checked + label[for="abrir-cerrar"] .cerrar {
+        display:inline;
+     }
+    
+     input#abrir-cerrar:checked + label[for="abrir-cerrar"] .abrir {
+        display:none;
+     }
+    
+     .sidebar {
+        position: fixed;
+        height: 100%;
+        width: 0;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        background-color: #00acee;
+        overflow-x: hidden;
+        transition: 0.4s;
+        padding: 1rem 0;
+        box-sizing:border-box;
+     }
+    
+     .sidebar .boton-cerrar {
+        position: absolute;
+        top: 0.5rem;
+        right: 1rem;
+        font-size: 2rem;
+        display: block;
+        padding: 0;
+        line-height: 1.5rem;
+        margin: 0;
+        height: 32px;
+        width: 32px;
+        text-align: center;      
+     }
+
+     .sidebar ul, .sidebar li{
+        margin:0;
+        padding:0;
+        list-style:none inside;
+    }
+    
+     .sidebar ul {
+        margin: 4rem auto;
+        display: block;
+        width: 80%;
+        min-width:200px;
+     }
+    
+     .sidebar a {
+        display: block;
+        font-size: 120%;
+        color: #eee;
+        text-decoration: none;       
+     }
+    
+     .sidebar a:hover{
+        color:#fff;
+        background-color: rgb(83, 82, 81);
+     }
+    
+     #contenido {
+        transition: margin-left .4s;
+        padding: 1rem;
+     }
+   
+     .abrir-cerrar {
+        color: #2E88C7;
+        font-size:1rem;   
+     }
+     /*Cuerpo*/
+    body {
+        font-family: "Segoe UI", sans-serif;
+        font-size:100%;
+        margin:0;
+        padding:0;
+    }
+
+     /*Navbar logo-buscador*/
+     nav{
+        border: white;
+        
+     }
+     h1 {
+       color:rgb(12, 10, 6);
+       font-size: 50px;
+     }
+    
+     header {
+       background:#333;
+       color:#eee;
+       width: 1px;
+     }
+     
+     /*Pie de pagina*/
+     .caja{
+       position: relative;
+       display: inline-block;
+       width: 1400px;
+       height: 900px;
+     }
+   
+     .texto1{
+       position: absolute;
+       top: 25%;
+       left: 78%;
+       font-size: 35px;
+       transform: translate(-40%, -40%);
+       color: black;
+     }
+     .texto2{
+      
+       position: absolute;
+       top: 50%;
+       left: 80%;
+       font-size: 20px;
+       transform: translate(-50%, -50%);
+       color: black;
+       text-align: left;
+     }
+
+     div#donar{
+        margin: 1%;
+        float:right;
+    }
+   </style> 
+
+    <!-- cuerpo -->
+    <body>
+        <!-- Menu -->
+        <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
+        <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
+        <div id="sidebar" class="sidebar">
+            <ul class="menu">
+                <li><a href="/UnoregBlog.html">BLOG </a></li>
+                <li><a href="/UnoregSumate.html">SUMATE COMO PROFESIONAL</a></li>
+                <li><a href="/UnoregTienda.html">TIENDA</a></li>
+            </ul>
+        </div>
+          
+           <!-- Navbar -->
+         <nav class="navbar">
+                <a><img src="/img/mascotaclub.png" width="" height=""></a>
+                <div>
+                  <a href="/Reginicio.html"> <img th:src="@{/img/icono.png}" width="128" height="128"> Registrarse/Iniciar Sesion</a>
+                </div>
+                <form class="d-flex">
+                  <input class="form-control me-sm-2" type="text" placeholder="Buscar">
+                  <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
+                </form>
+          </nav> 
+
+          <!-- Carrusel -->
+          <div class="container"> 
+              <div class="row"> 
+                  <div class="col-sm-12">
+                      <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                          <ol class="carousel-indicators">
+                             <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                             <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                             <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                          </ol>
+                          <div class="carousel-inner">
+                              <div class="carousel-item active">
+                                 <img class="d-block w-100" src="img/carr2.jpg" alt="First slide">
+                              </div>
+                              <div class="carousel-item">
+                                  <img class="d-block w-100" src="img/carr4.jpg" alt="Second slide">
+                               </div>
+                              <div class="carousel-item">
+                                 <img class="d-block w-100" src="img/carr3.jpg" alt="Third slide">
+                               </div>
+                          </div>
+                           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                             <span class="sr-only"></span>
+                          </a>
+                          <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                             <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                             <span class="sr-only"></span>
+                          </a>
+                      </div>
+                  </div>
+                </div>
+         </div>
+            
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    </body> 
+
+ <!--PIE DE PAGINA-->
+ <footer>
+       <div id="donar"class="text-end">
+         <b><a href="Donar.html" target="_blank">¡Doná para los que necesitan tu ayuda aquí! <i class="fa-regular fa-credit-card" style="color:rgb(243, 180, 8)"></i></a></b>
+       </div>     
+ </footer>
+
+</html>
