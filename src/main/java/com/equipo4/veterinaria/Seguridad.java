@@ -36,9 +36,9 @@ public class Seguridad extends WebSecurityConfigurerAdapter{
     
     @Override
     protected void configure(HttpSecurity http) throws Exception{
-        http.headers().frameOptions().sameOrigin().and()
+        http
                 .authorizeRequests()
-                .antMatchers("/css/*","/img/*","/js/*").permitAll().and().formLogin()
+                .antMatchers("/css/**","/img/**","/js/**").permitAll().and().formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/logincheck")
                 .usernameParameter("username")
@@ -47,7 +47,6 @@ public class Seguridad extends WebSecurityConfigurerAdapter{
                 .failureUrl("/login?error=error")
                 .permitAll().and().logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/Home")
-                .and().csrf().disable();
+                .logoutSuccessUrl("/Home");
     }
 }

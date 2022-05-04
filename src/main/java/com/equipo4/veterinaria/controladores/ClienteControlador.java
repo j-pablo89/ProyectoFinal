@@ -22,8 +22,8 @@ public class ClienteControlador {
         return "Home";
     }
     
-    @GetMapping("/Reginicio.html")
+    @GetMapping("/reginicio")
     public String login(){
-        return "Reginicio.html";
+        return "Reginicio";
     }
 }
