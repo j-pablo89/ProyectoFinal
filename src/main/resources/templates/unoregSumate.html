@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>SUMATE COMO PROFESIONAL</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.min.css" >
-    <link rel="icon" href="img/iconohuella.png">
+    <link rel="stylesheet" th:href="@{css/all.min.css}" >
+    <link rel="icon" th:href="@{img/iconohuella.png}">
      <!-- Menu -->
      <input type="checkbox" id="abrir-cerrar" name="abrir-cerrar" value="">
      <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
@@ -178,42 +178,42 @@
     <!-- cuerpo -->
     <body >
         
-        <a><img src="img/mascotaclub.png" width="" height=""></a>
+        <a><img th:src="@{img/mascotaclub.png}" width="" height=""></a>
         <div class="bg"></div>
         
         <div id="sidebar" class="sidebar">
             <ul class="menu">
-                <li><a href="Home.html">HOME </a></li>
-                <li><a href="UnoregBlog.html">BLOG </a></li>
-                <li><a href="UnoregSumate.html">SUMATE COMO PROFESIONAL</a></li>
-                <li><a href="UnoregTienda.html">TIENDA</a></li>
-                <li><a href="Registrouser1.html">REGISTRARSE </a></li>
+                <li><a th:href="@{/}">HOME </a></li>
+                <li><a th:href="@{/unoregBlog}">BLOG </a></li>
+                <li><a th:href="@{/unoregSumate}">SUMATE COMO PROFESIONAL</a></li>
+                <li><a th:href="@{/unoregTienda}">TIENDA</a></li>
+                <li><a th:href="@{/registrouser1}">REGISTRARSE </a></li>
          </ul>
       </div>
     
-      <form id="equipo" action="Graciasnoreg.html" method="post">
+      <form id="equipo" th:action="@{/Graciasnoreg}" method="post">
       
             <legend>¡SUMATE A NUESTRO EQUIPO!</legend>
              
               <div class="mb-3">
                  <label for="Nya">Nombre y Apellido:</label>
-                 <input type="text" placeholder="Nombre y Apellido" id="Nya">
+                 <input type="text" placeholder="Nombre y Apellido" id="Nya" name="Nomyap">
               </div>
               <div class="mb-3">
                  <label for="mat">N° De Matrícula:</label>
-                 <input type="number" placeholder="N° De Matricula" id="mat" >
+                 <input type="number" placeholder="N° De Matricula" id="mat" name="matricula">
               </div>
               <div class="mb-3">
                  <label for="fecha">Fecha de Nacimiento</label>
-                 <input type="date" name="" id="">
+                 <input type="date" id="" name="fechaNac">
               </div>
               <div class="mb-3">
                  <label for="email">Correo Electrónico:</label>
-                 <input type="email" placeholder="example@.com" id="email" >
+                 <input type="email" placeholder="example@.com" id="email" name="email">
               </div>
               <div class="mb-3">
                   <label for="telefono">Teléfono:</label>
-                  <input type="tel" placeholder="(cod area) Numero" >
+                  <input type="tel" placeholder="(cod area) Numero" name="telefono">
               </div> 
               <div class="mb-3">
                   <input type="submit" value="Enviar Datos"> 

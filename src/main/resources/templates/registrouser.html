@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>REGISTRARSE</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-        <link rel="stylesheet" href="css/all.min.css" >
-        <link rel="icon" href="img/iconohuella.png">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" th:href="@{css/all.min.css}" >
+        <link rel="icon" th:href="@{img/iconohuella.png}">
+        <link rel="stylesheet" th:href="@{css/style.css}">
         
     </head>
 
@@ -38,30 +38,30 @@
     <body >
         
         <div class="wrapper">
-            <form id="mascotaForm" action="Registromascota.html" method="post" >
+            <form id="mascotaForm" th:action="@{/registromascota}" method="post" >
                 <legend>REGISTRATE AQUÍ</legend>
                   <div class="mb-3">
                      <label for="NYA">Nombre y Apellido:</label>
-                     <input type="text" placeholder="Nombre y Apellido" id="NYA">
+                     <input type="text" placeholder="Nombre y Apellido" id="NYA" name="Nombyap">
                    </div>
                   <div class="mb-3">
                       <label for="email">Correo Electrónico:</label>
-                      <input type="email" placeholder="example@gmail.com" id="email" >
+                      <input type="email" placeholder="example@gmail.com" id="email" name="email">
                     </div>
                    <div class="mb-3">
                       <label for="contraseña">Contraseña:</label>
-                      <input type="password" placeholder="contraseña"  >
+                      <input type="password" placeholder="contraseña" name="password" >
                    </div>
                    <div class="mb-3">
-                      <label for="contraseña">Contraseña:</label>
-                      <input type="password" placeholder=" repetir contraseña "  >
+                      <label for="contraseña">Repetir Contraseña:</label>
+                      <input type="password" placeholder=" repetir contraseña " name="password2">
                    </div>
                    <div class="mb-3">
                       <label for="telefono">Telefono:</label>
-                      <input type="tel" placeholder="(cod area) Numero" >
+                      <input type="tel" placeholder="(cod area) Numero" name="telefono">
                  </div>
                   <input type="submit" value="Continuar"> 
-                  <button><a href="Reginicio.html">Volver</a></button>             
+                  <button><a th:href="@{/reginicio}">Volver</a></button>             
             </form>      
         </div>
         

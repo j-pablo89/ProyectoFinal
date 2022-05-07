@@ -41,12 +41,12 @@ public class Seguridad extends WebSecurityConfigurerAdapter{
                 .antMatchers("/css/**","/img/**","/js/**").permitAll().and().formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/logincheck")
-                .usernameParameter("username")
+                .usernameParameter("email")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/Homeuser")
                 .failureUrl("/login?error=error")
                 .permitAll().and().logout()
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/Home");
+                .logoutSuccessUrl("/home");
     }
 }

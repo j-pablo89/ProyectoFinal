@@ -188,9 +188,9 @@
         <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
         <div id="sidebar" class="sidebar">
             <ul class="menu">
-                <li><a href="/UnoregBlog">BLOG </a></li>
-                <li><a href="/UnoregSumate.html">SUMATE COMO PROFESIONAL</a></li>
-                <li><a href="/UnoregTienda.html">TIENDA</a></li>
+                <li><a th:href="@{/unoregBlog}">BLOG </a></li>
+                <li><a th:href="@{/unoregSumate}">SUMATE COMO PROFESIONAL</a></li>
+                <li><a th:href="@{/unoregTienda}">TIENDA</a></li>
             </ul>
         </div>
           
@@ -198,7 +198,7 @@
          <nav class="navbar">
                 <a><img th:src="@{/img/mascotaclub.png}" width="" height=""></a>
                 <div>
-                  <a href="/reginicio"> <img th:src="@{/img/icono.png}" width="128" height="128"> Registrarse/Iniciar Sesion</a>
+                  <a th:href="@{/login/reginicio}"> <img th:src="@{/img/icono.png}" width="128" height="128"> Registrarse/Iniciar Sesion</a>
                 </div>
                 <form class="d-flex">
                   <input class="form-control me-sm-2" type="text" placeholder="Buscar">
@@ -249,7 +249,7 @@
  <!--PIE DE PAGINA-->
  <footer>
        <div id="donar"class="text-end">
-         <b><a href="Donar.html" target="_blank">¡Doná para los que necesitan tu ayuda aquí! <i class="fa-regular fa-credit-card" style="color:rgb(243, 180, 8)"></i></a></b>
+         <b><a th:href="@{/donar}" target="_blank">¡Doná para los que necesitan tu ayuda aquí! <i class="fa-regular fa-credit-card" style="color:rgb(243, 180, 8)"></i></a></b>
        </div>     
  </footer>
 

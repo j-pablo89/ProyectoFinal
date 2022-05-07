@@ -1,34 +1,35 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registrarse/Iniciar Sesion</title>
     <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.min.css" >
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="icon" href="img/iconohuella.png">
+    <link rel="stylesheet" th:href="@{css/all.min.css}" >
+    <link rel="stylesheet" th:href="@{css/style.css}">
+    <link rel="icon" th:href="@{img/iconohuella.png}">
   </head>
 
   <body background="img/iniciosesion.png">
     <div class="wrapper">
-        <form class="login" action="Homeuser.html" method="post">
+        <form class="login" th:action="@{/logincheck}" method="post">
+           
            <p class="title">Iniciar Sesion</p>
              <div class="mb-3">
-               <input type="email" placeholder="Correo electrónico" autofocus/>
+               <input type="email" placeholder="Correo electrónico" autofocus name="email"/>
                
              </div>
              <div class="mb-3">
-               <input type="password" placeholder="Contraseña" />
+               <input type="password" placeholder="Contraseña" name="password"/>
                
              </div>
              <div class="mb-3">
                <button type="submit">Log in</button> 
              </div>
              <div class="mb-3">
-               <a href="Registrouser.html">Registrarse</a>
-               <a href="Home.html">Volver</a>
+               <a th:href="@{/registrouser}">Registrarse</a>
+               <a th:href="@{/}">Volver</a>
              </div>
            </p>
          </form>

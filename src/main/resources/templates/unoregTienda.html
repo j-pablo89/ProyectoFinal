@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="es">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title></title>
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.min.css" >
-    <link rel="icon" href="img/iconohuella.png">
+    <link rel="stylesheet" th:href="@{css/all.min.css}" >
+    <link rel="icon" th:href="@{img/iconohuella.png}">
     <style>
         
         input#abrir-cerrar {
@@ -331,18 +331,18 @@
     <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
     <div id="sidebar" class="sidebar">
         <ul class="menu">
-            <li><a href="Home.html">HOME </a></li>
-            <li><a href="UnoregBlog.html">BLOG </a></li>
-            <li><a href="UnoregSumate.html">SUMATE COMO PROFESIONAL</a></li>
-            <li><a href="UnoregTienda.html">TIENDA</a></li>
-            <li><a href="Registrouser1.html">REGISTRARSE </a></li>
+            <li><a th:href="@{/}">HOME </a></li>
+            <li><a th:href="@{/unoregBlog}">BLOG </a></li>
+            <li><a th:href="@{/unoregSumate}">SUMATE COMO PROFESIONAL</a></li>
+            <li><a th:href="@{/unoregTienda}">TIENDA</a></li>
+            <li><a th:href="@{/registrouser1}">REGISTRARSE </a></li>
             
         </ul>
     </div>
 
     <nav class="navbar">
         <div id="contenido">
-            <a> <img src="img/mascotaclub.png" width="" height=""></a>
+            <a> <img th:src="@{img/mascotaclub.png}" width="" height=""></a>
             
         
   </nav> 
@@ -353,7 +353,7 @@
             <main id="items" class="col-sm-8 row"></main>
             <!-- Carrito -->
             <aside class="col-sm-4">
-                <h2>Carrito<img src="img/carrito.png" alt=""></h2>
+                <h2>Carrito<img th:src="@{img/carrito.png}" alt=""></h2>
                 <!-- Elementos del carrito -->
                 <ul id="carrito" class="list-group"></ul>
                 <hr>
@@ -361,7 +361,7 @@
                 <p class="text-right">Total: $<span id="total"></span></p>
                 <div class="mb-3">
                 <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
-                <a href="Comprarnoreg.html"><button id="boton-comprar" class="btn btn-danger">Comprar</button></a>
+                <a th:href="@{/Comprarnoreg}"><button id="boton-comprar" class="btn btn-danger">Comprar</button></a>
                  </div>
             </aside>
         </div>
