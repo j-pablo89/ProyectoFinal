@@ -20,4 +20,8 @@ public interface ClienteRepositorio extends JpaRepository<Cliente, String>{
     
     @Query("SELECT c FROM Cliente c WHERE c.email = :email")
     public Cliente buscarClientePorEmail(@Param("email") String email);
+    
+    @Query(value="SELECT c FROM Cliente c ORDER BY c.id desc LIMIT 1", nativeQuery = true)
+    public Cliente obtenerUltimoCliente();
+    
 }

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>REGISTRAR MASCOTA</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-        <link rel="stylesheet" href="css/all.min.css" >
-        <link rel="icon" href="img/iconohuella.png">
+        <link rel="stylesheet" th:href="@{/css/all.min.css}" >
+        <link rel="icon" th:href="@{/img/iconohuella.png}">
          <!-- Menu -->
          
     </head>
@@ -76,9 +76,9 @@
     
       <!-- cuerpo -->
 
-    <body background="img/gatoregistro.png">
+    <body background="/img/gatoregistro.png">
   
-           <form id="formulario" action="Registroexitoso.html" method="post" >
+           <form id="formulario" th:action="@{/mascota/registromascota}" method="POST" >
              <legend>REGISTRÁ A TU MASCOTA</legend>
                  <div class="mb-3">
                      <label>Nombre: </label>
@@ -91,6 +91,10 @@
                  <div class="mb-3">
                      <label>Mascota: </label>
                      <input type="text" placeholder="Perro/Gato" name="mascota">
+                 </div>
+             <div class="mb-3">
+                     <label>Sexo: </label>
+                     <input type="text" placeholder="Macho/Hembra" name="sexo">
                  </div>
                  <div class="mb-3">
                      <label>Carnet:  </label>
@@ -120,6 +124,7 @@
                  
                     const nombre=document.querySelector("input[name=nombre]");
                     const edad=document.querySelector("input[name=edad]");
+                    const sexo = document.querySelector("input[name=sexo]");
                     const mascota=document.querySelector("input[name=mascota]");
                     const carnet=document.querySelector("input[name=carnet]");
                  
@@ -137,6 +142,11 @@
                     }
                     edad.classList.remove("error");
 
+                    if (!sexo.value) {
+                        mascota.classList.add("error");
+                        return;
+                    }
+                    mascota.classList.remove("error");
                     if (!mascota.value) {
                         mascota.classList.add("error");
                         return;
@@ -149,11 +159,12 @@
                     }
                     carnet.classList.remove("error");
                  
-                    agregarFila(nombre.value, edad.value, mascota.value, carnet.value);
-                    agregarInput(nombre.value, edad.value, mascota.value, carnet.value);
+                    agregarFila(nombre.value, edad.value, mascota.value, sexo.value, carnet.value);
+                    agregarInput(nombre.value, edad.value, mascota.value, sexo.value, carnet.value);
                  
                     /*limpiamos los valores del input*/
                     carnet.value="";
+                    sexo.value="";
                     mascota.value="";
                     edad.value="";
                     nombre.value="";
@@ -171,7 +182,7 @@
                  *
                  * 
                  */
-                function agregarFila(nombre, edad, mascota, carnet) {
+                function agregarFila(nombre, edad, mascota, sexo, carnet) {
                     // añadimos  a la tabla crando el tr, td's y el botón para eliminarlo
                     const tr=document.createElement("tr");
                  
@@ -189,6 +200,11 @@
                      txt=document.createTextNode(mascota);
                     tdMascota.appendChild(txt);
                     tdMascota.className="mascota";
+                    
+                    const tdSexo=document.createElement("td");
+                     txt=document.createTextNode(sexo);
+                    tdSexo.appendChild(txt);
+                    tdSexo.className="sexo";
 
                     const tdCarnet=document.createElement("td");
                       txt=document.createTextNode(carnet);
@@ -206,6 +222,7 @@
                     tr.appendChild(tdNombre);
                     tr.appendChild(tdEdad);
                     tr.appendChild(tdMascota);
+                    tr.appendChild(tdSexo);
                     tr.appendChild(tdCarnet);
                     tr.appendChild(tdRemove);
                  
@@ -224,9 +241,10 @@
                     const nombre=tr.querySelector(".nombre").innerText;
                     const edad=tr.querySelector(".edad").innerText;
                     const mascota=tr.querySelector(".mascota").innerText;
+                    const sexo=tr.querySelector(".sexo").innerText;
                     const carnet=tr.querySelector(".carnet").innerText;
                  
-                    eliminarInput(nombre, edad, mascota, carnet);
+                    eliminarInput(nombre, edad, mascota, sexo, carnet);
                     tr.remove();
                  
                     // Si no hay ningun elemento en la lista, escondemos la tabla
@@ -239,11 +257,11 @@
                  * Funcion para crear un input oculto para cuando se envie el formulario
                  *
                  */
-                function agregarInput(nombre, edad, mascota,carnet) {
+                function agregarInput(nombre, edad, mascota,sexo,carnet) {
                     const input=document.createElement("input");
                     input.type="hidden";
                     input.name="nombres[]";
-                    input.value=nombre+"-"+edad+"-"+mascota+"-"+carnet;
+                    input.value=nombre+"-"+edad+"-"+mascota+"-"+sexo+"-"+carnet;
                  
                     document.querySelector("form").appendChild(input);
                 }
@@ -253,8 +271,8 @@
                  *
                  *
                  */
-                function eliminarInput(nombre, edad,mascota,carnet) {
-                    const input=document.querySelector("input[type=hidden][value="+nombre+"-"+edad+"-"+mascota+"-"+carnet+"]");
+                function eliminarInput(nombre, edad,mascota,sexo, carnet) {
+                    const input=document.querySelector("input[type=hidden][value="+nombre+"-"+edad+"-"+mascota+"-"+mascota+"-"+carnet+"]");
                     input.remove();
                 }
                 </script>

@@ -35,7 +35,7 @@ public class MascotaServicio {
     @Autowired
     private FotoServicio fotoServicio;
 
-    public Mascota crearMascota(MultipartFile file, String idCliente, String nombre, Integer edad, Tipo tipo, Sexo sexo) throws ErrorServicio {
+    public Mascota crearMascota(String idCliente, String nombre, Integer edad, Tipo tipo, Sexo sexo) throws ErrorServicio {
 
         Cliente cliente = clienteRepositorio.findById(idCliente).get();
 
@@ -57,17 +57,17 @@ public class MascotaServicio {
         mascota.setSexo(sexo);
         mascota.setTipo(tipo);
         mascota.setCliente(cliente);
-        if (file != null) {
-            Foto foto = fotoServicio.guardar(file);
-            mascota.setFoto(foto);
-        } else {
-            throw new ErrorServicio("Debe cargar una imagen");
-        }
+//        if (file != null) {
+//            Foto foto = fotoServicio.guardar(file);
+//            mascota.setFoto(foto);
+//        } else {
+//            throw new ErrorServicio("Debe cargar una imagen");
+//        }
 
         return mascotaRepositorio.save(mascota);
     }
 
-    public void modificarMascota(MultipartFile file, String idCliente, String idMascota, String nombre, Integer edad) throws ErrorServicio {
+    public void modificarMascota(String idCliente, String idMascota, String nombre, Integer edad) throws ErrorServicio {
         if (nombre.isEmpty()) {
             throw new ErrorServicio("El nombre no puede estar vacio");
         }
@@ -82,11 +82,11 @@ public class MascotaServicio {
                 mascota.setNombre(nombre);
                 mascota.setEdad(edad);
 
-                String idFoto = null;
-                if (mascota.getFoto() != null) {
-                    idFoto = mascota.getFoto().getId();
-                }
-                Foto foto = fotoServicio.actualizarFoto(idFoto, file);
+//                String idFoto = null;
+//                if (mascota.getFoto() != null) {
+//                    idFoto = mascota.getFoto().getId();
+//                }
+//                Foto foto = fotoServicio.actualizarFoto(idFoto, file);
                 mascotaRepositorio.save(mascota);
             } else {
                 throw new ErrorServicio("No Puede realizar esta accion");

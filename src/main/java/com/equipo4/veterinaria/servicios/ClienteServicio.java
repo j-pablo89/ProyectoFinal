@@ -39,7 +39,7 @@ public class ClienteServicio implements UserDetailsService {
     @Autowired
     private FotoServicio fotoServicio;
 
-    public void registrarCliente(MultipartFile file, String nombre, String apellido, Integer dni, Integer telefono,
+    public Cliente registrarCliente(String nombre, String apellido, String telefono,
             String email, String password, String password2) throws ErrorServicio {
         if (nombre.isEmpty()) {
             throw new ErrorServicio("El campo nombre no puede estar vacio");
@@ -47,9 +47,7 @@ public class ClienteServicio implements UserDetailsService {
         if (apellido.isEmpty()) {
             throw new ErrorServicio("El campo apellido no puede estar vacio");
         }
-        if (dni == null) {
-            throw new ErrorServicio("El campo DNI no puede estar vacio");
-        }
+        
         if (telefono == null) {
             throw new ErrorServicio("El campo telefono no puede estar vacio");
         }
@@ -74,19 +72,19 @@ public class ClienteServicio implements UserDetailsService {
         cliente = new Cliente();
         cliente.setNombre(nombre);
         cliente.setApellido(apellido);
-        cliente.setDni(dni);
+        
         cliente.setTelefono(telefono);
         cliente.setEmail(email);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         cliente.setPassword(encoder.encode(password));
-        if (file != null) {
-            Foto foto = fotoServicio.guardar(file);
-            cliente.setFoto(foto);
-        }
-        clienteRepositorio.save(cliente);
+//        if (file != null) {
+//            Foto foto = fotoServicio.guardar(file);
+//            cliente.setFoto(foto);
+//        }
+        return clienteRepositorio.save(cliente);
     }
 
-    public void modificarCliente(String id, MultipartFile file, String nombre, String apellido, Integer dni, Integer telefono,
+    public void modificarCliente(String id, String nombre, String apellido, String telefono,
             String email, String password, String password2) throws ErrorServicio {
 
         if (nombre.isEmpty()) {
@@ -95,9 +93,7 @@ public class ClienteServicio implements UserDetailsService {
         if (apellido.isEmpty()) {
             throw new ErrorServicio("El campo apellido no puede estar vacio");
         }
-        if (dni == null) {
-            throw new ErrorServicio("El campo DNI no puede estar vacio");
-        }
+        
         if (telefono == null) {
             throw new ErrorServicio("El campo telefono no puede estar vacio");
         }
@@ -118,18 +114,18 @@ public class ClienteServicio implements UserDetailsService {
             Cliente cliente = respuesta.get();
             cliente.setNombre(nombre);
             cliente.setApellido(apellido);
-            cliente.setDni(dni);
+            
             cliente.setTelefono(telefono);
             cliente.setEmail(email);
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             cliente.setPassword(encoder.encode(password));
-            String idFoto = null;
-            if (cliente.getFoto() != null) {
-                idFoto = cliente.getFoto().getId();
-            }
-
-            Foto foto = fotoServicio.actualizarFoto(idFoto, file);
-            cliente.setFoto(foto);
+//            String idFoto = null;
+//            if (cliente.getFoto() != null) {
+//                idFoto = cliente.getFoto().getId();
+//            }
+//
+//            Foto foto = fotoServicio.actualizarFoto(idFoto, file);
+//            cliente.setFoto(foto);
             clienteRepositorio.save(cliente);
         } else {
             throw new ErrorServicio("Usuario No Encontrado");
@@ -144,7 +140,7 @@ public class ClienteServicio implements UserDetailsService {
         }
         clienteRepositorio.delete(cliente);
     }
-
+    
     public List<Cliente> findAll() {
         return clienteRepositorio.findAll();
     }
@@ -159,7 +155,7 @@ public class ClienteServicio implements UserDetailsService {
             Cliente cliente = clienteRepositorio.buscarClientePorEmail(email);
             List<GrantedAuthority> privilegios = new ArrayList<>();
             agregarUsuarioALaSesion(cliente);
-            privilegios.add(new SimpleGrantedAuthority("ROLE_" + cliente.getRol()));
+           // privilegios.add(new SimpleGrantedAuthority("ROLE_" + cliente.getRol()));
             return new User(email, cliente.getPassword(), privilegios);
         } catch (Exception e) {
             throw new UsernameNotFoundException("El usuario no existe");

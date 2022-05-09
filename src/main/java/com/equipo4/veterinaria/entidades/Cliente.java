@@ -5,7 +5,7 @@
  */
 package com.equipo4.veterinaria.entidades;
 
-import com.equipo4.veterinaria.enums.Rol;
+
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -30,14 +30,11 @@ public class Cliente implements Serializable {
     
     private String nombre;
     private String apellido;
-    private Integer dni;
     private String email;
-    private Integer telefono;
+    private String telefono;
     private String password;
     
-    @Enumerated(EnumType.STRING)
-    private Rol rol;
-   
+    
     @OneToOne
     private Foto foto;
     
@@ -74,22 +71,15 @@ public class Cliente implements Serializable {
         this.email = email;
     }
 
-    public Integer getTelefono() {
+    public String getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(Integer telefono) {
+    public void setTelefono(String telefono) {
         this.telefono = telefono;
     }
 
-    public Integer getDni() {
-        return dni;
-    }
-
-    public void setDni(Integer dni) {
-        this.dni = dni;
-    }
-
+    
     public Foto getFoto() {
         return foto;
     }
@@ -106,13 +96,7 @@ public class Cliente implements Serializable {
         this.password = password;
     }
 
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
+    
 
     
     

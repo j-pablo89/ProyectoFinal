@@ -7,7 +7,7 @@ package com.equipo4.veterinaria.servicios;
 
 import com.equipo4.veterinaria.entidades.Foto;
 import com.equipo4.veterinaria.entidades.Veterinario;
-import com.equipo4.veterinaria.enums.Rol;
+
 import com.equipo4.veterinaria.errores.ErrorServicio;
 import com.equipo4.veterinaria.repositorios.VeterinarioRepositorio;
 import java.util.ArrayList;
@@ -75,7 +75,7 @@ public class VeterinarioServicio implements UserDetailsService {
         veterinario.setEmail(email);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         veterinario.setPassword(encoder.encode(password));
-        veterinario.setRol(Rol.VETERINARIO);
+        
         return veterinarioRepositorio.save(veterinario);
     }
     
@@ -157,7 +157,7 @@ public class VeterinarioServicio implements UserDetailsService {
         try {
             Veterinario veterinario = veterinarioRepositorio.buscarPorEmail(email);
             List<GrantedAuthority> privilegios = new ArrayList<>();
-            privilegios.add(new SimpleGrantedAuthority("ROLE_"+veterinario.getRol()));
+            //privilegios.add(new SimpleGrantedAuthority("ROLE_"+veterinario.getRol()));
             agregarUsuarioALaSesion(veterinario);
             return new User(email,veterinario.getPassword(),privilegios);
         } catch (Exception e) {
