@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>REGISTRARSE</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-        <link rel="stylesheet" href="css/all.min.css" >
-        <link rel="icon" href="img/iconohuella.png">
+        <link rel="stylesheet" th:href="@{/css/all.min.css}" >
+        <link rel="icon" th:href="@{/img/iconohuella.png}">
         
     </head>
        
@@ -189,33 +189,33 @@
         <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
         <div id="sidebar" class="sidebar">
             <ul class="menu">
-                <li><a href="Homeuser.html">HOME </a></li>
-                <li><a href="UregBlog.html">BLOG </a></li>
-                <li><a href="UregSumate.html">SUMATE COMO PROFESIONAL</a></li>
-                <li><a href="Consulta.html">CONSULTA ONLINE</a></li>
-                <li><a href="UregTienda.html">TIENDA</a></li> 
+                <li><a th:href="@{/homeuser}">HOME </a></li>
+                <li><a th:href="@{/uregBlog}">BLOG </a></li>
+                <li><a th:href="@{/uregSumate}">SUMATE COMO PROFESIONAL</a></li>
+                <li><a th:href="@{/consulta}">CONSULTA ONLINE</a></li>
+                <li><a th:href="@{/uregTienda}">TIENDA</a></li> 
                 
             </ul>
         </div>
 
         <nav class="navbar">
-            <a> <img id="img1" src="img/mascotaclub.png" width="" height=""></a>
+            <a> <img id="img1" th:src="@{/img/mascotaclub.png}" width="" height=""></a>
             <div class="dropdown show">
                 <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img id="img2" height="128" width="128"  class="rounded-circle " src="img/cat.jpg" />
+                    <img id="img2" height="128" width="128"  class="rounded-circle " th:src="@{/img/cat.jpg}" />
                 </a>
         
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="Perfil.html">Perfil</a>
-                    <a class="dropdown-item" href="Misconsultas.html">Mis Consultas</a>
-                    <a class="dropdown-item" href="Mismascotas.html">Mis Mascotas</a>
-                    <a class="dropdown-item" href="home.html">Cerrar Sesion</a>
+                    <a class="dropdown-item" th:href="@{/perfil}">Perfil</a>
+                    <a class="dropdown-item" th:href="@{/misconsultas}">Mis Consultas</a>
+                    <a class="dropdown-item" th:href="@{/mismascotas}">Mis Mascotas</a>
+                    <a class="dropdown-item" th:href="@{/logout}">Cerrar Sesion</a>
                 </div>
               
             </div>
         </nav> 
   
-           <form id="formulario" action="Mismascotas.html" method="post" >
+           <form id="formulario" th:action="@{/mismascotas}" method="post" >
              <legend>Editar</legend>
                  <div class="mb-3">
                      <label>Nombre: </label>
@@ -234,7 +234,7 @@
                      <input type="text" placeholder="Si/No" name="carnet">
                  </div>
                  <br><br><input type="submit" value="Agregar" class="boton agregar"> <input type="button" value="Guardar" class='boton guardar'>
-                 <a class="btn btn-outline-complementary" href="Mismascotas.html">Cancelar</a>
+                 <a class="btn btn-outline-complementary" th:href="@{/mismascotas}">Cancelar</a>
             
 
               <table id="listado" class="hide" >

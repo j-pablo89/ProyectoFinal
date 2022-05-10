@@ -6,6 +6,7 @@
 package com.equipo4.veterinaria.entidades;
 
 
+import com.equipo4.veterinaria.enums.Rol;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -34,6 +35,8 @@ public class Cliente implements Serializable {
     private String telefono;
     private String password;
     
+    @Enumerated(EnumType.STRING)
+    private Rol rol;
     
     @OneToOne
     private Foto foto;
@@ -94,6 +97,14 @@ public class Cliente implements Serializable {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 
     

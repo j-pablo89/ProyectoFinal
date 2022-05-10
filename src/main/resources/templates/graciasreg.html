@@ -1,21 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Registro</title>
         <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-        <link rel="stylesheet" href="css/all.min.css" >
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="icon" href="img/iconohuella.png">
+        <link rel="stylesheet" th:href="@{/css/all.min.css}" >
+        <link rel="stylesheet" th:href="@{/css/style.css}">
+        <link rel="icon" th:href="@{/img/iconohuella.png}">
     </head>
 
      <body>
            <div class="window-notice" id="window-notice">
                <div class="content">
                   <div class="content-text"> ¡GRACIAS POR SUMARTE! Te contactaremos a la brevedad
-                  <div class="content-buttons"><a href="home.html" id="close-button">Aceptar</a></div>
+
+                  <div class="content-buttons"><a th:href="@{/homeuser}" id="close-button">Aceptar</a></div>
                </div>
          </div>
         </body>

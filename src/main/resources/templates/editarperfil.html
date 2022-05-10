@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>EDITAR PERFIL</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-        <link rel="stylesheet" href="css/all.min.css" >
-        <link rel="icon" href="img/iconohuella.png">
+        <link rel="stylesheet" th:href="@{/css/all.min.css}" >
+        <link rel="icon" th:href="@{/img/iconohuella.png}">
         
         
         
@@ -153,60 +153,70 @@
         <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
         <div id="sidebar" class="sidebar">
             <ul class="menu">
-                <li><a href="Homeuser.html">HOME </a></li>
-                <li><a href="UregBlog.html">BLOG </a></li>
-                <li><a href="UregSumate.html">SUMATE COMO PROFESIONAL</a></li>
-                <li><a href="Consulta.html">CONSULTA ONLINE</a></li>
-                <li><a href="UregTienda.html">TIENDA</a></li> 
+                <li><a th:href="@{/homeuser}">HOME </a></li>
+                <li><a th:href="@{/uregBlog}">BLOG </a></li>
+                <li><a th:href="@{/uregSumate}">SUMATE COMO PROFESIONAL</a></li>
+                <li><a th:href="@{/consulta}">CONSULTA ONLINE</a></li>
+                <li><a th:href="@{/uregTienda}">TIENDA</a></li> 
                 
             </ul>
         </div>
 
         <nav class="navbar">
-            <a> <img src="img/mascotaclub.png" width="" height=""></a>
+            <a> <img th:src="@{/img/mascotaclub.png}" width="" height=""></a>
             <div class="dropdown show">
                 <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img height="128" width="128"  class="rounded-circle " src="img/cat.jpg" />
+                    <img height="128" width="128"  class="rounded-circle " th:src="@{/img/cat.jpg}" />
                 </a>
         
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="Perfil.html">Perfil</a>
-                    <a class="dropdown-item" href="Misconsultas.html">Mis Consultas</a>
-                    <a class="dropdown-item" href="Mismascotas.html">Mis Mascotas</a>
-                    <a class="dropdown-item" href="home.html">Cerrar Sesion</a>
+                    <a class="dropdown-item" th:href="@{/perfil}">Perfil</a>
+                    <a class="dropdown-item" th:href="@{/misconsultas}">Mis Consultas</a>
+                    <a class="dropdown-item" th:href="@{/mismascotas}">Mis Mascotas</a>
+                    <a class="dropdown-item" th:href="@{/logout}">Cerrar Sesion</a>
                 </div>
               </div>
               </div>
         </nav> 
 
         <div class="wrapper">
-            <form id="mascotaForm" action="Perfil.html" method="post" >
+            <form id="mascotaForm" th:action="@{/perfil}" method="post" enctype="multipart/form-data">
                 <legend>Editar Perfil</legend>
-                
+                <div class="profile-info-left mb-3">
+                    <div>
+                        <img height="120"  class="rounded-circle mu-user-avatar padding:20px" th:src="@{/img/cat.jpg}" />
+                        <input type="file" id="loadPhoto">
+                    </div> 
+                </div>
+
 
                   <div class="mb-3">
                      <label for="NYA">Nombre y Apellido:</label>
-                     <input type="text" placeholder="Nombre y Apellido" id="NYA">
+                     <input type="text" placeholder="Nombre" id="Nombre" name="nombre">
+                   </div>
+                <div class="mb-3">
+                     <label for="NYA">Nombre y Apellido:</label>
+                     <input type="text" placeholder="Apellido" id="Apellido" name="apellido">
                    </div>
                   <div class="mb-3">
                       <label for="email">Correo Electrónico:</label>
-                      <input type="email" placeholder="example@gmail.com" id="email" >
+                      <input type="email" placeholder="example@gmail.com" id="email" name="email" >
                     </div>
                    <div class="mb-3">
                       <label for="contraseña">Contraseña:</label>
-                      <input type="password" placeholder="contraseña"  >
+                      <input type="password" placeholder="contraseña"  name="password">
                    </div>
                    <div class="mb-3">
-                      <label for="contraseña">Contraseña:</label>
-                      <input type="password" placeholder="repetir contraseña"  >
+                      <label for="contraseña">Repetir Contraseña:</label>
+                      <input type="password" placeholder="repetir contraseña"  name="password2">
                    </div>
                    <div class="mb-3">
                       <label for="telefono">Telefono:</label>
-                      <input type="tel" placeholder="(cod area) Numero" >
+                      <input type="text" placeholder="Sin 0 Sin 15" name="telefono">
                  </div>
                 
                  <div class="mb-3">
-                  <a class="btn btn-outline-complementary" href="Perfil.html">Cancelar</a>
+                  <a class="btn btn-outline-complementary" th:href="@{/perfil}">Cancelar</a>
                   <input type="submit" name="commit" value="Guardar" class="btn btn-complementary mu-edit-profile-btn" data-disable-with="Guardar" /> 
                 </div>             
             </form>      

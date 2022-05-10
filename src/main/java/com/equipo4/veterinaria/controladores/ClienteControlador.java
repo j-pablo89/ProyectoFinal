@@ -98,6 +98,10 @@ public class ClienteControlador {
         return "registromascota";
     }
     
+    @GetMapping("/homeuser")
+    public String homeUser(){
+        return "homeuser";
+    }
     
 
 }

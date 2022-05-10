@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
-        <title>MIS MASCOTAS</title>
+        <title>PERFIL</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-        <link rel="stylesheet" href="css/all.min.css" >
-         <link rel="icon" href="img/iconohuella.png">
+        <link rel="stylesheet" th:href="@{/css/all.min.css}" >
+         <link rel="icon" th:href="@{/img/iconohuella.png}">
         
     </head>
    <!-- estilo del menu -->
@@ -147,57 +147,59 @@
         <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
         <div id="sidebar" class="sidebar">
             <ul class="menu">
-                <li><a href="Homeuser.html">HOME </a></li>
-                <li><a href="UregBlog.html">BLOG </a></li>
-                <li><a href="UregSumate.html">SUMATE COMO PROFESIONAL</a></li>
-                <li><a href="Consulta.html">CONSULTA ONLINE</a></li>
-                <li><a href="UregTienda.html">TIENDA</a></li>                
+                     <li><a th:href="@{/homeuser}">HOME </a></li>
+                     <li><a th:href="@{/uregBlog}">BLOG </a></li>
+                     <li><a th:href="@{/uregSumate}">SUMATE COMO PROFESIONAL</a></li>
+                     <li><a th:href="@{/consulta}">CONSULTA ONLINE</a></li>
+                      <li><a th:href="@{/uregTienda}">TIENDA</a></li>         
             </ul>
-        </div>
 
+        </div>
         <nav class="navbar">
-            <a> <img src="img/mascotaclub.png" width="" height=""></a>
+            <a> <img th:src="@{/img/mascotaclub.png}" width="" height=""></a>
             <div class="dropdown show">
                 <a class="btn btn-white dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img height="128" width="128"  class="rounded-circle " src="img/cat.jpg" />
+                    <img height="128" width="128"  class="rounded-circle " th:src="@{/img/cat.jpg}" />
                 </a>
         
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="Perfil.html">Perfil</a>
-                    <a class="dropdown-item" href="Misconsultas.html">Mis Consultas</a>
-                    <a class="dropdown-item" href="Mismascotas.html">Mis Mascotas</a>
-                    <a class="dropdown-item" href="home.html">Cerrar Sesion</a>
+                  <a class="dropdown-item" th:href="@{/perfil}">Perfil</a>
+                  <a class="dropdown-item" th:href="@{/misconsultas}">Mis Consultas</a>
+                  <a class="dropdown-item" th:href="@{/mismascotas}">Mis Mascotas</a>
+                  <a class="dropdown-item" th:href="@{/logout}">Cerrar Sesion</a>
                 </div>
               </div>
               </div>
         </nav> 
        
-          
             <div class="container">
-                
                     <div class="user-header mb-3">
-                        <h1>Mis Mascotas</h1>
+                       <h1>Mi perfil</h1>
                     </div>
-                   <div class="mb-3">
-                     <span> <strong>Nombre:</strong> </span>
-                   </div>
+                    <div class="profile-info-left mb-3">
+                        <img height="120"  class="rounded-circle mu-user-avatar padding:20px" th:src="@{/img/cat.jpg}" />
+                    </div>
+                    
                     <div class="mb-3">
-                      <span> <strong>Edad:</strong> </span>
+                        <span> <strong>Nombre y Apellido:</strong> </span>
                     </div>
-                  <div class="mb-3">
-                     <span> <strong> Mascota:</strong> </span>
-                  </div>
-                  <div class="mb-3">
-                     <span> <strong> Carnet:</strong> </span>
-                  </div>
-                  <div class="mb-3">
-                     <a class="btn btn-complementary" href="Editarmascotas.html">Editar</a>
-                 </div>
-     
+                    <div class="mb-3">
+                         <span> <strong>Correo Electrónico:</strong> </span>
+                    </div>
+                    <div class="mb-3">
+                        <span> <strong> Contraseña:</strong> </span>
+                    </div>
+                    <div class="mb-3">
+                         <span> <strong> Teléfono:</strong> </span>
+                    </div>
+                    <div class="mb-3">
+                     <a class="btn btn-complementary" th:href="@{/editarperfil}">Editar perfil</a>
+                    </div>
             </div>
 
           <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
           <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>    
-  </body>
+    
+    </body>
 </html>

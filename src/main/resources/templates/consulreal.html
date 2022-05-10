@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>CONSULTA</title>
         <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-        <link rel="stylesheet" href="css/all.min.css" >
-        <link rel="stylesheet" href="style.css">
-        <link rel="icon" href="img/iconohuella.png">
+        <link rel="stylesheet" th:href="@{/css/all.min.css}" >
+        <link rel="stylesheet" th:href="@{/style.css}">
+        <link rel="icon" th:href="@{/img/iconohuella.png}">
     </head>
 
     <body>
@@ -21,8 +21,8 @@
                              document.getElementById("current_date").innerHTML = Date();
                              </script>
                            </div>
-                           <button><a href="Homeuser.html" id="close-button">Aceptar</a></button>
-                           <button><a href="Consulta.html" id="close-button">Realizar otra consulta</a></button>
+                           <button><a th:href="@{/homeuser}" id="close-button">Aceptar</a></button>
+                           <button><a th:href="@{/consulta}" id="close-button">Realizar otra consulta</a></button>
                  </div>
             </div>
         </div>

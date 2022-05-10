@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
     <head>
         <title>BLOG</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-        <link rel="stylesheet" href="css/all.min.css" >
+        <link rel="stylesheet" th:href="@{/css/all.min.css}" >
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-        <link rel="icon" href="img/iconohuella.png">
+        <link rel="icon" th:href="@{/img/iconohuella.png}">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         
@@ -174,10 +174,10 @@
         <label for="abrir-cerrar">&#9776; <span class="abrir"></span><span class="cerrar"></span></label>
         <div id="sidebar" class="sidebar">
             <ul class="menu">
-            <li><a href="Homeuser.html">HOME </a></li>
+            <li><a href="homeuser.html">HOME </a></li>
             <li><a href="UregBlog.html">BLOG </a></li>
             <li><a href="UregSumate.html">SUMATE COMO PROFESIONAL</a></li>
-            <li><a href="Consulta.html">CONSULTA ONLINE</a></li>
+            <li><a href="consulta.html">CONSULTA ONLINE</a></li>
             <li><a href="UregTienda.html">TIENDA</a></li> 
             </ul>
         </div>

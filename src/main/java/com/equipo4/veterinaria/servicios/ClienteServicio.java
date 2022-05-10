@@ -7,6 +7,7 @@ package com.equipo4.veterinaria.servicios;
 
 import com.equipo4.veterinaria.entidades.Cliente;
 import com.equipo4.veterinaria.entidades.Foto;
+import com.equipo4.veterinaria.enums.Rol;
 import com.equipo4.veterinaria.errores.ErrorServicio;
 import com.equipo4.veterinaria.repositorios.ClienteRepositorio;
 import java.util.ArrayList;
@@ -15,7 +16,6 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -77,6 +77,7 @@ public class ClienteServicio implements UserDetailsService {
         cliente.setEmail(email);
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         cliente.setPassword(encoder.encode(password));
+        cliente.setRol(Rol.REGISTRADO);
 //        if (file != null) {
 //            Foto foto = fotoServicio.guardar(file);
 //            cliente.setFoto(foto);
@@ -85,7 +86,7 @@ public class ClienteServicio implements UserDetailsService {
     }
 
     public void modificarCliente(String id, String nombre, String apellido, String telefono,
-            String email, String password, String password2) throws ErrorServicio {
+            String email, String password, String password2, MultipartFile file) throws ErrorServicio {
 
         if (nombre.isEmpty()) {
             throw new ErrorServicio("El campo nombre no puede estar vacio");
@@ -119,13 +120,13 @@ public class ClienteServicio implements UserDetailsService {
             cliente.setEmail(email);
             BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
             cliente.setPassword(encoder.encode(password));
-//            String idFoto = null;
-//            if (cliente.getFoto() != null) {
-//                idFoto = cliente.getFoto().getId();
-//            }
-//
-//            Foto foto = fotoServicio.actualizarFoto(idFoto, file);
-//            cliente.setFoto(foto);
+            String idFoto = null;
+            if (cliente.getFoto() != null) {
+                idFoto = cliente.getFoto().getId();
+            }
+
+            Foto foto = fotoServicio.actualizarFoto(idFoto, file);
+            cliente.setFoto(foto);
             clienteRepositorio.save(cliente);
         } else {
             throw new ErrorServicio("Usuario No Encontrado");

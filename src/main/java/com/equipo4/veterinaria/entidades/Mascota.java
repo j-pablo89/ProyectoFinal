@@ -43,8 +43,8 @@ public class Mascota implements Serializable {
     
     @OneToOne
     private Foto foto;
-    
-       
+
+         
     public String getId() {
         return id;
     }
