@@ -179,21 +179,29 @@
                     <div class="profile-info-left mb-3">
                         <img height="120"  class="rounded-circle mu-user-avatar padding:20px" th:src="@{/img/cat.jpg}" />
                     </div>
-                    
+                    <input type="hidden" name="id" th:value="${perfil.id}"/>
                     <div class="mb-3">
-                        <span> <strong>Nombre y Apellido:</strong> </span>
+                        <span> <strong>Nombre: </strong> </span>
+                        <input type="text" id="NYA" name="nombre" th:value="${perfil.nombre}"/>
                     </div>
                     <div class="mb-3">
-                         <span> <strong>Correo Electrónico:</strong> </span>
+                         <span> <strong>Apellido: </strong> </span>
+                         <input type="text" id="NYA" name="apellido" th:value="${perfil.apellido}"/>
                     </div>
                     <div class="mb-3">
-                        <span> <strong> Contraseña:</strong> </span>
+                        <span> <strong>Correo Electrónico:</strong> </span>
+                        <input type="email" name="email" th:value="${perfil.email}"/>
+                    </div>
+                    <div class="mb-3">
+                        <span> <strong>Contraseña:</strong> </span>
+                        <input type="password" name="password" th:value="${perfil.password}"/>
                     </div>
                     <div class="mb-3">
                          <span> <strong> Teléfono:</strong> </span>
+                         <input type="text" name="telefono" th:value="${perfil.telefono}"/>
                     </div>
                     <div class="mb-3">
-                     <a class="btn btn-complementary" th:href="@{/editarperfil}">Editar perfil</a>
+                     <a class="btn btn-complementary" th:href="@{/editarperfil(id=__${session.usuariosession.id}__)}">Editar perfil</a>
                     </div>
             </div>
 

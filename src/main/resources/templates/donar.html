@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>DONACIONES</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://bootswatch.com/5/sketchy/bootstrap.min.css">
-    <link rel="stylesheet" href="css/all.min.css" >
-     <link rel="icon" href="img/iconohuella.png">
+    <link rel="stylesheet" th:href="@{/css/all.min.css}" >
+     <link rel="icon" th:href="@{/img/iconohuella.png}">
     
 </head>
 
@@ -78,11 +78,19 @@
                          </p>
                             <p><strong> O escaneando nuestro QR </strong><br>
                               <img class="aligncenter wp-image-2814"
-                                src="http://www.proyecto4patas.org/wp-content/uploads/2020/05/WhatsApp-Image-2020-05-21-at-13.38.35.jpeg"
+                                th:src="@}/img/QR.jpeg}"
                                 alt="mercado-pago" width="250" height="250" scale="0">
                             </p>
                       </div>
                     </h3>
                   </div>
+                    </div>
+                  </div>
+              </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
                 </body>
 </html>

@@ -51,10 +51,17 @@
         padding:10px 20px;
      }
      .agregar {
-        background-color:green;
+        /*background-color:green;*/
+        background-color: white;
+        color: white;
      }
      .enviar {
         background-color:rgb(128, 0, 117);
+       
+        
+     }
+     .omitir {
+        background-color: chocolate;
      }
  
      #listado {
@@ -100,7 +107,7 @@
                      <label>Carnet:  </label>
                      <input type="text" placeholder="Si/No" name="carnet">
                  </div>
-                 <br><br><input type="submit" value="Agregar" class="boton agregar"> <input type="button" value="Enviar" class='boton enviar'>
+                 <br><br><input type="submit" value="Agregar" class="boton agregar hide"> <input type="button" value="Enviar" class='boton enviar'>
                 
               <table id="listado" class="hide" >
                   <thead class="bg-white border-black">
@@ -176,6 +183,7 @@
                 document.querySelector(".enviar").addEventListener("click", function(e) {
                     this.closest("form").submit();
                 })
+                
                  
                 /**
                  * Funcion para añadir los datos en la tabla

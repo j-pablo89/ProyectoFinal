@@ -180,39 +180,43 @@
         </nav> 
 
         <div class="wrapper">
-            <form id="mascotaForm" th:action="@{/perfil}" method="post" enctype="multipart/form-data">
-                <legend>Editar Perfil</legend>
+            <legend>Editar Perfil</legend>
+            <form enctype="multipart/form-data" id="mascotaForm" th:action="@{/editarperfil}" method="post" >
+                
+                <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
+                                
                 <div class="profile-info-left mb-3">
-                    <div>
+                    
                         <img height="120"  class="rounded-circle mu-user-avatar padding:20px" th:src="@{/img/cat.jpg}" />
-                        <input type="file" id="loadPhoto">
-                    </div> 
+                        <input type="file" id="loadPhoto" name="file">
+                    
                 </div>
 
+                 <input type="hidden" name="id" th:value="${perfil.id}"/>
 
                   <div class="mb-3">
-                     <label for="NYA">Nombre y Apellido:</label>
-                     <input type="text" placeholder="Nombre" id="Nombre" name="nombre">
+                     <label for="NYA">Nombre:</label>
+                     <input type="text" id="NYA" name="nombre" th:value="${perfil.nombre}"/>
                    </div>
                 <div class="mb-3">
-                     <label for="NYA">Nombre y Apellido:</label>
-                     <input type="text" placeholder="Apellido" id="Apellido" name="apellido">
+                     <label for="NYA">Apellido:</label>
+                     <input type="text" id="NYA" name="apellido" th:value="${perfil.apellido}"/>
                    </div>
                   <div class="mb-3">
                       <label for="email">Correo Electrónico:</label>
-                      <input type="email" placeholder="example@gmail.com" id="email" name="email" >
+                      <input type="email" name="email" th:value="${perfil.email}"/>
                     </div>
                    <div class="mb-3">
                       <label for="contraseña">Contraseña:</label>
-                      <input type="password" placeholder="contraseña"  name="password">
+                      <input type="password" name="password" th:value="${password}"/>
                    </div>
                    <div class="mb-3">
                       <label for="contraseña">Repetir Contraseña:</label>
-                      <input type="password" placeholder="repetir contraseña"  name="password2">
+                      <input type="password" name="password" th:value="${password2}"/>
                    </div>
                    <div class="mb-3">
                       <label for="telefono">Telefono:</label>
-                      <input type="text" placeholder="Sin 0 Sin 15" name="telefono">
+                      <input type="text" name="telefono" th:value="${perfil.telefono}"/>
                  </div>
                 
                  <div class="mb-3">

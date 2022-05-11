@@ -44,7 +44,7 @@ public class MascotaControlador {
     @PostMapping("/registromascota")
     public String registroMascota(ModelMap modelo,
                                  @RequestParam String nombre,
-                                 @RequestParam (value = "edad", required = true)Integer edad,
+                                 @RequestParam (name = "edad",required = false) Integer edad,
                                  @RequestParam String mascota,
                                  @RequestParam String sexo,
                                  @RequestParam String carnet){

@@ -39,30 +39,31 @@
         
         <div class="wrapper">
             <form id="mascotaForm" th:action="@{/registrouser}" method="POST" >
+                <p th:if="${error != null}" th:text="${error}" style="color: red"></p>
                 <legend>REGISTRATE AQUÍ</legend>
                   <div class="mb-3">
                      <label for="NYA">Nombre:</label>
-                     <input type="text" placeholder="Nombre" id="NYA" name="nombre">
+                     <input type="text" placeholder="Nombre" id="NYA" name="nombre" th:value="${nombre}">
                    </div>
                 <div class="mb-3">
                      <label for="NYA">Apellido:</label>
-                     <input type="text" placeholder="Apellido" id="NYA" name="apellido">
+                     <input type="text" placeholder="Apellido" id="NYA" name="apellido" th:value="${apellido}">
                    </div>
                 <div class="mb-3">
                       <label for="email">Correo Electrónico:</label>
-                      <input type="email" placeholder="example@gmail.com" id="email" name="email">
+                      <input type="email" placeholder="example@gmail.com" id="email" name="email" th:value="${email}">
                     </div>
                    <div class="mb-3">
                       <label for="contraseña">Contraseña:</label>
-                      <input type="password" placeholder="contraseña" name="password" >
+                      <input type="password" placeholder="contraseña" name="password" th:value="${password}">
                    </div>
                    <div class="mb-3">
                       <label for="contraseña">Repetir Contraseña:</label>
-                      <input type="password" placeholder=" repetir contraseña " name="password2">
+                      <input type="password" placeholder=" repetir contraseña " name="password2" th:value="${password2}">
                    </div>
                    <div class="mb-3">
                       <label for="telefono">Telefono:</label>
-                      <input type="text" placeholder="Sin 0 Sin 15" name="telefono">
+                      <input type="text" placeholder="Sin 0 Sin 15" name="telefono" th:value="${telefono}">
                  </div>
                   <input type="submit" value="Continuar"> 
                   <button><a th:href="@{/reginicio}">Volver</a></button>             

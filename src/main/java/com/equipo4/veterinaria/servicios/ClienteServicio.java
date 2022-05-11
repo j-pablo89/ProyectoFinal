@@ -16,6 +16,7 @@ import java.util.Optional;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -127,6 +128,7 @@ public class ClienteServicio implements UserDetailsService {
 
             Foto foto = fotoServicio.actualizarFoto(idFoto, file);
             cliente.setFoto(foto);
+            cliente.setRol(Rol.REGISTRADO);
             clienteRepositorio.save(cliente);
         } else {
             throw new ErrorServicio("Usuario No Encontrado");
@@ -156,7 +158,7 @@ public class ClienteServicio implements UserDetailsService {
             Cliente cliente = clienteRepositorio.buscarClientePorEmail(email);
             List<GrantedAuthority> privilegios = new ArrayList<>();
             agregarUsuarioALaSesion(cliente);
-           // privilegios.add(new SimpleGrantedAuthority("ROLE_" + cliente.getRol()));
+            privilegios.add(new SimpleGrantedAuthority("ROLE_" + cliente.getRol()));
             return new User(email, cliente.getPassword(), privilegios);
         } catch (Exception e) {
             throw new UsernameNotFoundException("El usuario no existe");
@@ -166,7 +168,7 @@ public class ClienteServicio implements UserDetailsService {
     public void agregarUsuarioALaSesion(Cliente cliente) {
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
         HttpSession session = attributes.getRequest().getSession(true);
-        session.setAttribute("cliente", cliente);
+        session.setAttribute("usuariosession", cliente);
     }
 
 }
